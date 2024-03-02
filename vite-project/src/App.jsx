@@ -1,30 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
 import Article from "./components/Article";
 import HeroSection from "./components/HeroSection";
-import Navbar from "./components/Navbar";
 
 const App = () => {
+	const [openModal, setOpenModal] = useState(false);
+
+	const handleModal = (state) => {
+		setOpenModal(state);
+	};
 	return (
 		<div>
-			<Navbar />
-			<HeroSection />
-			{/* navigation and buttons */}
-			<Article
-				title="✍️ Article
-        "
-				image="https://images.pexels.com/photos/812264/pexels-photo-812264.jpeg?auto=compress&cs=tinysrgb&w=600"
-				description="I’ve worked in UX for the better part of a decade. From now on, I plan to rei…"
-				Heading="What if famous brands had regular fonts? Meet RegulaBrands!"
-				userName="Siddharth Goyal"
-			/>
-
-			<Article
-				title="Meetup"
-				image="https://images.pexels.com/photos/812264/pexels-photo-812264.jpeg?auto=compress&cs=tinysrgb&w=600"
-				description="I’ve worked in UX for the better part of a decade. From now on, I plan to rei…"
-				Heading="What if famous brands had regular fonts? Meet RegulaBrands!"
-				userName="Siddharth Goyal"
-			/>
+			<Navbar handleModal={handleModal} />
+			<HeroSection openModal={openModal} handleModal={handleModal} />
+			<Article />
 		</div>
 	);
 };
